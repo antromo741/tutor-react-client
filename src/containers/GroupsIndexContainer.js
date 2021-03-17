@@ -8,17 +8,23 @@ export default class GroupsIndexContainer extends Component {
     };
 
     componentDidMount() {
-        setTimeout(() => {
-            this.setState({
-                groups: [
-                    { name: "Calc 1" },
-                    { name: "Physics 1" },
-                ],
-                loading: false,
-            });
-        }, 1000);
-    }
+        fetch('http://localhost:3000/groups',{
+        method: 'get',
+        headers: {
+            'Accept': 'application/json',
+            'Content-type': 'application/json'
+        }
 
+    })
+    .then( res => res.json())
+    .then(groupsJson => {
+        console.log('groups', groupsJson)
+        this.seState({
+            groups: groupsJson,
+            loading: false
+        })
+    })
+    }
     render() {
         return (
             <section className="max-w-6xl w-11/12 mx-auto mt-16">
