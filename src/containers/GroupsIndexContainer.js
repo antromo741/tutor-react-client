@@ -8,7 +8,7 @@ export default class GroupsIndexContainer extends Component {
     };
 
     componentDidMount() {
-        fetch('http://localhost:3000/groups',{
+        fetch('http://localhost:3001/groups',{
         method: 'get',
         headers: {
             'Accept': 'application/json',
@@ -19,12 +19,14 @@ export default class GroupsIndexContainer extends Component {
     .then( res => res.json())
     .then(groupsJson => {
         console.log('groups', groupsJson)
-        this.seState({
+        this.setState({
             groups: groupsJson,
             loading: false
         })
     })
     }
+
+
     render() {
         return (
             <section className="max-w-6xl w-11/12 mx-auto mt-16">
