@@ -36,7 +36,7 @@ function App() {
           </Route>
           <Route path="/groups/new">
             <GroupFormContainer />
-            </Route>
+          </Route>
         </Switch>
       </Router>
     </div>
