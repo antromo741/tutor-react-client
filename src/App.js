@@ -38,7 +38,7 @@ function App() {
           </Route>
           <Route path="/groups/new" component={GroupFormContainer} />
           <Route path="/groups/:groupId/sessions/new" component={NewSessionContainer} />
-          <Route path="/groups/:groupId" component={NewSessionContainer} />
+          <Route path="/groups/:groupId" component={GroupShowContainer} />
         </Switch>
       </Router>
     </div>

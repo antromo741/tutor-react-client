@@ -18,7 +18,7 @@ export default class NewSessionContainer extends Component {
             body,
         })
             .then((res) => res.json())
-            .then((sssionJson) => {
+            .then((sessionJson) => {
                 console.log(sessionJson);
             });
     };
