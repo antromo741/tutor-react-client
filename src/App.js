@@ -34,9 +34,8 @@ function App() {
           <Route exact path="/">
             <GroupsIndexContainer />
           </Route>
-          <Route path="/groups/new">
-            <GroupFormContainer />
-          </Route>
+          <Route path="/groups/new" component={GroupFormContainer} />
+          
         </Switch>
       </Router>
     </div>
