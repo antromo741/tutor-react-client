@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import GroupsIndexContainer from "./containers/GroupsIndexContainer";
 import GroupFormContainer from "./containers/GroupFormContainer";
+import NewSessionContainer from "./containers/NewSessionContainer";
 
 function App() {
   return (
@@ -35,7 +36,7 @@ function App() {
             <GroupsIndexContainer />
           </Route>
           <Route path="/groups/new" component={GroupFormContainer} />
-          
+          <Route path="/groups/:groupId/sessions/new" component={NewSessionContainer} />
         </Switch>
       </Router>
     </div>
