@@ -8,6 +8,7 @@ import {
 import GroupsIndexContainer from "./containers/GroupsIndexContainer";
 import GroupFormContainer from "./containers/GroupFormContainer";
 import NewSessionContainer from "./containers/NewSessionContainer";
+import GroupShowContainer from "./containers/GroupShowContainer";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           </Route>
           <Route path="/groups/new" component={GroupFormContainer} />
           <Route path="/groups/:groupId/sessions/new" component={NewSessionContainer} />
+          <Route path="/groups/:groupId" component={NewSessionContainer} />
         </Switch>
       </Router>
     </div>
