@@ -2,8 +2,27 @@ import React, { Component } from "react";
 
 export default class NewSessionContainer extends Component {
     handleSubmit= (e) => {
-        e.preventDefault();
-    }
+        e.prsessionDefault();
+        const form = e.target;
+        const body = new FormData();
+        body.append('session[name]', form.name.value);
+        body.append('session[description]', form.description.value);
+        body.append('session[start_time]', form.start_time.value);
+        body.append('session[end_time]', form.end_time.value);
+        body.append('session[location]', form.location.value);
+        body.append('session[poster]', form.poster.files[0], form.poster.value);
+        body.append("session[group_id]", this.props.match.params.groupId);
+        
+        fetch("http://localhost:3001/sessions", {
+            method: "post",
+            body,
+        })
+            .then((res) => res.json())
+            .then((sssionJson) => {
+                console.log(sessionJson);
+            });
+    };
+    
 
     render() {
         return (
