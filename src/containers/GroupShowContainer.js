@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom'
 
 export default class GroupShowContainer extends Component {
     state = {
@@ -28,29 +29,27 @@ export default class GroupShowContainer extends Component {
         }
         return (
             <section className="max-w-6xl w-11/12 mx-auto mt-16">
-                <h1 className="text-3xl font-bold text-center">
-                {this.state.group.name}
+                <h1 className="text-3xl font-bold text-center mb-8">
+                    {this.state.group.name}
                 </h1>
-                <div claaName="grid grid-cols-3">
-                {this.state.sessions.map((event) => (
-                    <figure>
-                    <img
-                    className="" 
-                    alt={session.name}
-                    src={session.poster_url}
-                    />
-                    <h2>{session.name}</h2>
-                    <p>{session.start_time}</p>
-                    <p>{session.end_time}</p>
-                    <p>{session.location}</p>
-
-                    </figure>
-                ))}
+                <p className="my-2"><Link to={`/groups/${this.state.group.id}/sessions/new`}>Add a session</Link></p>
+                <div className="grid grid-cols-3">
+                    {this.state.sessions.map((session) => (
+                        <figure className="p-4 shadow">
+                            <img
+                                className=""
+                                alt={session.name}
+                                src={session.poster_url}
+                            />
+                            <h2>{session.name}</h2>
+                            <p>{session.start_time}</p>
+                            <p>{session.end_time}</p>
+                            <p>{session.location}</p>
+                            
+                        </figure>
+                    ))}
                 </div>
             </section>
-        )
+        );
     }
-
-
-
 }
