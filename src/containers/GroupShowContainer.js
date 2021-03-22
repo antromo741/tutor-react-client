@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom'
+import { connect } from "react-redux";
+import { fetchGroup } from "../actions/groups";
 
-export default class GroupShowContainer extends Component {
+class GroupShowContainer extends Component {
     state = {
         group: {},
         sessions: [],
@@ -10,37 +12,33 @@ export default class GroupShowContainer extends Component {
 
 
     componentDidMount() {
-        const groupId = this.props.match.params.groupId
-        fetch(`http://localhost:3001/groups/${groupId}`)
-            .then(res => res.json())
-            .then(({group, sessions}) => {
-                this.setState({
-                    group,
-                    sessions,
-                    loading: false
-                })
-            })
+        const groupId = this.props.match.params.groupId;
+        this.props.dispatchFetchGroup(groupId);
     }
 
     
     render() {
-        if (this.state.loading) {
+        if (this.props.loadingState !== "successful") {
             return <div>Loading Spinner</div>;
         }
         return (
             <section className="max-w-6xl w-11/12 mx-auto mt-16">
                 <h1 className="text-3xl font-bold text-center mb-8">
-                    {this.state.group.name}
+                    {this.props.group.name}
                 </h1>
-                <p className="my-2"><Link to={`/groups/${this.state.group.id}/sessions/new`}>Add a session</Link></p>
+                <p className="my-2">
+                    
+                    <Link to={`/groups/${this.props.group.id}/sessions/new`}>Add a session</Link></p>
+                
                 <div className="grid grid-cols-3">
-                    {this.state.sessions.map((session) => (
+                    {this.props.sessions.map((session) => (
                         <figure className="p-4 shadow">
                             <img
                                 className=""
                                 alt={session.name}
                                 src={session.poster_url}
                             />
+                            
                             <h2>{session.name}</h2>
                             <p>{session.start_time}</p>
                             <p>{session.end_time}</p>
