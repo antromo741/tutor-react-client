@@ -51,13 +51,6 @@ class GroupShowContainer extends Component {
         );
     }
 }
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        dispatchFetchGroup: (groupId) => dispatch(fetchGroup(groupId)),
-    }
-}
-
 const mapStateToProps = (state, { match }) => {
     const groupId = match.params.groupId
     let loadingState = state.sessions.groupsLoaded[groupId] || 'notStarted'
@@ -67,5 +60,13 @@ const mapStateToProps = (state, { match }) => {
         loadingState,
     }
 }
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        dispatchFetchGroup: (groupId) => dispatch(fetchGroup(groupId)),
+    }
+}
+
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(GroupShowContainer)
