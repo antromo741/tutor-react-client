@@ -1,4 +1,4 @@
-import { START_LOADING_GROUPS, SUCCESSFULLY_LOADED_GROUPS } from '.'
+import { START_LOADING_GROUPS, SUCCESSFULLY_LOADED_GROUPS, START_LOADING_GROUP, SUCCESSFULLY_LOADED_GROUP_SESSIONS } from '.'
 
 export const fetchGroups = () => {
     return (dispatch) => {
@@ -19,3 +19,17 @@ export const fetchGroups = () => {
             })
     }
 }
+
+export const fetchGroup = (groupId) => {
+    return (dispatch) => {
+        dispatch({ type: START_LOADING_GROUP, payload: groupId });
+        fetch(`http://localhost:3001/groups/${groupId}`)
+            .then((res) => res.json())
+            .then((groupSessionsJson) => {
+                dispatch({
+                    type: SUCCESSFULLY_LOADED_GROUP_SESSIONS,
+                    payload: groupSessionsJson
+                })
+            });
+    };
+};
