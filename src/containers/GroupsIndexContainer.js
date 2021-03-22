@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import GroupsList from "../components/GroupsList";
+import { connect } from 'react-redux'
+import { fetchGroups } from '../actions/groups'
 
-export default class GroupsIndexContainer extends Component {
+class GroupsIndexContainer extends Component {
     state = {
         groups: [],
         loading: true,
@@ -35,3 +37,12 @@ export default class GroupsIndexContainer extends Component {
         )
     }
 }
+const mapStateToProps = (state) => {
+    return {}
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {}
+}
+
+export default connect( mapStateToProps, mapDispatchToProps )( GroupsIndexContainer )
