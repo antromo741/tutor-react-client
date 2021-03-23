@@ -2,9 +2,8 @@ import {
     START_LOADING_GROUPS,
     SUCCESSFULLY_LOADED_GROUPS,
     FAILED_LOADING_GROUPS,
-    ADD_GROUP,
-    START_LOADING_GROUP,
-    SUCCESSFULLY_LOADED_GROUP_SESSIONS,
+    SUCCESSFULLY_CREATED_GROUP,
+    SUCCESSFULLY_LOADED_GROUP_SESSIONS
 
 } from '../actions'
 
@@ -30,7 +29,12 @@ export default function groupsReducer(state = initialState, action) {
                 return {
                     ...state,
                     list: state.list.concat(action.payload.group),
-                };
+                }
+            }
+        case SUCCESSFULLY_CREATED_GROUP:
+            return {
+                ...state,
+                list: state.list.concat(action.payload),
             }
         default:
             return state;
