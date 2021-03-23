@@ -21,8 +21,10 @@ export default function sessionReducer(state = initialState, action) {
                     ...state.groupsLoaded,
                     [action.payload.group.id]: 'successful',
                 },
-                list: state.list.concat(action.payload.sessions),
-            }
+                list: state.list
+                    .filter((session) => session.group_id !== action.payload.group.id)
+                    .concat(action.payload.sessions),
+            };
         default:
             return state
     }
