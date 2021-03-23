@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux'
-
+import { createGroup } from '../actions/groups'
 
 class GroupFormContainer extends Component {
     state = {
@@ -15,18 +15,9 @@ class GroupFormContainer extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        fetch('http://localhost:3001/groups', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ group: this.state })
+        this.props.dispatchCreateGroup(this.state).then((groupJson) => {
+            this.props.history.push('/')
         })
-            .then(res => res.json())
-            .then(groupJson => {
-                this.props.history.push('/')
-            })
     }
 
     render() {
@@ -50,11 +41,14 @@ class GroupFormContainer extends Component {
 }
 const mapStateToProps = (state) => {
     return {
-        
+
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return {}
+    return {
+        dispatchCreateGroup: (formData) => dispatch(createGroup(formData)),
+    }
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(GroupFormContainer)
