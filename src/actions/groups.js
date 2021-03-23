@@ -1,4 +1,4 @@
-import { START_LOADING_GROUPS, SUCCESSFULLY_LOADED_GROUPS, START_LOADING_GROUP, SUCCESSFULLY_LOADED_GROUP_SESSIONS } from '.'
+import { START_LOADING_GROUPS, SUCCESSFULLY_LOADED_GROUPS, START_LOADING_GROUP, SUCCESSFULLY_LOADED_GROUP_SESSIONS, SUCCESSFULLY_CREATED_GROUP } from '.'
 
 export const fetchGroups = () => {
     return (dispatch) => {
@@ -33,3 +33,23 @@ export const fetchGroup = (groupId) => {
             });
     };
 };
+
+export const createGroup = (formData) => {
+    return (dispatch) => {
+        return fetch('http://localhost:3001/groups', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ group: formData }),
+        })
+            .then((res) => res.json())
+            .then((groupJson) => {
+                dispatch({
+                    type: SUCCESSFULLY_CREATED_GROUP,
+                    payload: groupJson,
+                })
+            })
+    }
+}
