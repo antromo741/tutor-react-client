@@ -44,7 +44,13 @@ export const createGroup = (formData) => {
             },
             body: JSON.stringify({ group: formData }),
         })
-            .then((res) => res.json())
+            .then((res) => {
+                if (res.ok) {
+                    return res.json()
+                } else {
+                    return res.json().then((errors) => Promise.reject(errors))
+                }
+            })
             .then((groupJson) => {
                 dispatch({
                     type: SUCCESSFULLY_CREATED_GROUP,
