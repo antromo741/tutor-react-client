@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux'
 
-export default class GroupFormContainer extends Component {
+
+class GroupFormContainer extends Component {
     state = {
         name: "",
     };
@@ -46,3 +48,13 @@ export default class GroupFormContainer extends Component {
         );
     }
 }
+const mapStateToProps = (state) => {
+    return {
+        
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {}
+}
+export default connect(mapStateToProps, mapDispatchToProps)(GroupFormContainer)
