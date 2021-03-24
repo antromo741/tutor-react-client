@@ -1,28 +1,33 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import {createSession} from "../actions/sessions"
 
-export default class NewSessionContainer extends Component {
+
+class NewSessionContainer extends Component {
+    state = {
+        errors: {}
+    }
+
     handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
-        const body = new FormData();
-        body.append('session[name]', form.name.value);
-        body.append('session[description]', form.description.value);
-        body.append('session[start_time]', form.start_time.value);
-        body.append('session[end_time]', form.end_time.value);
-        body.append('session[location]', form.location.value);
-        body.append('session[poster]', form.poster.files[0], form.poster.value);
-        body.append("session[group_id]", this.props.match.params.groupId)
+        const formData = new FormData();
+        formData.append('session[name]', form.name.value);
+        formData.append('session[description]', form.description.value);
+        formData.append('session[start_time]', form.start_time.value);
+        formData.append('session[end_time]', form.end_time.value);
+        formData.append('session[location]', form.location.value);
+        formData.append('session[poster]', form.poster.files[0], form.poster.value);
+        formData.append("session[group_id]", this.props.match.params.groupId);
         
-        fetch("http://localhost:3001/sessions", {
-            method: "post",
-            body
-        })
-            .then(res => res.json())
-            .then(sessionJson => {
+      this.props.dispatchCreateSession(formData)
+            .then((sessionJson) => {
                 this.props.history.push(`/groups/${this.props.match.params.groupId}`);
             })
-    }
-    
+            .catch(errors => {
+                this.setState({error})
+            })
+        }
 
     render() {
         return (
@@ -30,56 +35,83 @@ export default class NewSessionContainer extends Component {
         onSubmit={this.handleSubmit}>
             <h1 className="text-3xl text-center font-semibold mb-8">New Session</h1>
             <fieldset className="">
-                <label htmlFor="name" className="block uppercase">Name</label>
+                <label htmlFor="name" className="block uppercase">
+                Name{" "}
+                <span className="text-red-40">{this.state.errors.name}</span>
+                </label>
                 <input
                     type="text"
                     name="name"
                     id="name"
-                    className="w-full border-2 p-4 my-4"
+                    className={`w-full border-2 focus:outline-none focus:ring-2 p-4 mb-4 ${this.state.errors.name && "focus:ring-red-400 border-red-400"
+                    }`}
                 />
             </fieldset>
 
-            <fieldset className="">
-                <label htmlFor="description" className="block uppercase">Description</label>
-                <textarea
-                    className="w-full border-2 p-4 my-4"
-                    name="description"
-                    id="description"
+                <fieldset className="">
+                    <label htmlFor="description" className="block uppercase">
+                        Description{" "}
+                        <span className="text-red-400">
+                            {this.state.errors.description}
+                        </span>
+                    </label>
+                    <textarea
+                        name="description"
+                        id="description"
+                        className={`w-full border-2 p-4 my-4 focus:outline-none focus:ring-2 ${this.state.errors.description &&
+                            "focus:ring-red-400 border-red-400"
+                            }`}
                 ></textarea>
             </fieldset>
             
-            <fieldset className="">
-                <label htmlFor="start_time" className="block uppercase">Start Time</label>
-                <input
-                    type="datetime-local"
-                    name="start_time"
-                    id="start_time"
-                    className="w-full border-2 p-4 my-4"
-                />
-            </fieldset>
-            
-            <fieldset className="">
-                <label htmlFor="end_time" className="block uppercase">End Time</label>
-                <input
-                    type="datetime-local"
-                    name="end_time"
-                    id="end_time"
-                    className="w-full border-2 p-4 my-4"
-                />
-            </fieldset>
-            
-            <fieldset className="">
-                <label htmlFor="location" className="block uppercase">Location</label>
-                <input
-                    type="text"
-                    name="location"
-                    id="location"
-                    className="w-full border-2 p-4 my-4"
-                />
-            </fieldset>
+                <fieldset className="">
+                    <label htmlFor="start_time" className="block uppercase">
+                        Start Time{" "}
+                        <span className="text-red-400">{this.state.errors.start_time}</span>
+                    </label>
+                    <input
+                        type="datetime-local"
+                        name="start_time"
+                        id="start_time"
+                        className={`w-full border-2 p-4 my-4 focus:outline-none focus:ring-2 ${this.state.errors.start_time &&
+                            "focus:ring-red-400 border-red-400"
+                            }`}
+                    />
+                </fieldset>
+                
+                <fieldset className="">
+                    <label htmlFor="end_time" className="block uppercase">
+                        End Time{" "}
+                        <span className="text-red-400">{this.state.errors.end_time}</span>
+                    </label>
+                    <input
+                        type="datetime-local"
+                        name="end_time"
+                        id="end_time"
+                        className={`w-full border-2 p-4 my-4 focus:outline-none focus:ring-2 ${this.state.errors.end_time && "focus:ring-red-400 border-red-400"
+                            }`}
+                    />
+                </fieldset>
             
                 <fieldset className="">
-                    <label htmlFor="poster" className="block uppercase">Poster</label>
+                    <label htmlFor="location" className="block uppercase">
+                        Location{" "}
+                        <span className="text-red-400">{this.state.errors.location}</span>
+                    </label>
+                    <input
+                        type="text"
+                        name="location"
+                        id="location"
+                        className={`w-full border-2 p-4 my-4 focus:outline-none focus:ring-2 ${this.state.errors.location && "focus:ring-red-400 border-red-400"
+                            }`}
+                    />
+                </fieldset>
+            
+                <fieldset className="">
+                    <label htmlFor="poster" className="block uppercase">
+                        Poster{" "}
+                        <span className="text-red-400">{this.state.errors.poster}</span>
+                    </label>
                     <input
                         type="file"
                         className="w-full my-4"
@@ -96,4 +128,13 @@ export default class NewSessionContainer extends Component {
         </form>
     );
     }
-    }
+}
+
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        dispatchCreateSession: (formData) => dispatch(createSession(formData))
+    };
+};
+
+export default connect(null, mapDispatchToProps)(NewSessionContainer);
