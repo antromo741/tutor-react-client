@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import {createSession} from "../actions/sessions"
-
+import "tailwindcss/tailwind.css"
 
 class NewSessionContainer extends Component {
     state = {
@@ -17,7 +17,7 @@ class NewSessionContainer extends Component {
         formData.append('session[start_time]', form.start_time.value);
         formData.append('session[end_time]', form.end_time.value);
         formData.append('session[location]', form.location.value);
-        formData.append('session[poster]', form.poster.files[0], form.poster.value);
+        form.poster.files[0] && formData.append('session[poster]', form.poster.files[0], form.poster.value);
         formData.append("session[group_id]", this.props.match.params.groupId);
         
       this.props.dispatchCreateSession(formData)
@@ -25,7 +25,7 @@ class NewSessionContainer extends Component {
                 this.props.history.push(`/groups/${this.props.match.params.groupId}`);
             })
             .catch(errors => {
-                this.setState({error})
+                this.setState({errors})
             })
         }
 
@@ -37,13 +37,14 @@ class NewSessionContainer extends Component {
             <fieldset className="">
                 <label htmlFor="name" className="block uppercase">
                 Name{" "}
-                <span className="text-red-40">{this.state.errors.name}</span>
+                <span className="text-red-400">{this.state.errors.name}</span>
                 </label>
                 <input
                     type="text"
                     name="name"
                     id="name"
-                    className={`w-full border-2 focus:outline-none focus:ring-2 p-4 mb-4 ${this.state.errors.name && "focus:ring-red-400 border-red-400"
+                    className={`w-full border-2 focus:outline-none focus:ring-2 p-4 mb-4 ${this.state.errors.name && 
+                        "focus:ring-red-400 border-red-400"
                     }`}
                 />
             </fieldset>

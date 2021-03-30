@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+import "tailwindcss/tailwind.css"
 const GroupListItem = ({ group }) => {
     return (
         <li className="" key={group.id}>

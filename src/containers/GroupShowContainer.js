@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from 'react-router-dom'
 import { connect } from "react-redux";
 import { fetchGroup } from "../actions/groups";
-
+import "tailwindcss/tailwind.css"
 class GroupShowContainer extends Component {
     state = {
         group: {},
