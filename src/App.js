@@ -22,7 +22,7 @@ function App() {
             exact
             to="/"
           >
-            Groups
+            Subjects
           </NavLink>
           <NavLink
             className="inline-block px-4 py-2"
@@ -30,7 +30,7 @@ function App() {
             exact
             to="/groups/new"
           >
-            New Group
+            New Subject
           </NavLink>
         </nav>
         <Switch>
