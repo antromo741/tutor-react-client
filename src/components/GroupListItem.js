@@ -1,11 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import "tailwindcss/tailwind.css"
+
 const GroupListItem = ({ group }) => {
     return (
-        <li className="" key={group.id}>
+        <button className="[w-full text-2xl rounded-md p-4 bg-blue-300 mt-4 hover:bg-blue-400  transition-all duration-200" 
+            key={group.id}>
             <Link to={`/groups/${group.id}`}>{group.name}</Link>
-        </li>
+        </button>
     );
 };
 

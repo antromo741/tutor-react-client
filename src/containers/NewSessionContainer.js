@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import {createSession} from "../actions/sessions"
-import "tailwindcss/tailwind.css"
+
 
 class NewSessionContainer extends Component {
     state = {

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import GroupsList from "../components/GroupsList";
 import { connect } from 'react-redux'
 import { fetchGroups } from '../actions/groups'
-import "tailwindcss/tailwind.css"
+
 class GroupsIndexContainer extends Component {
     componentDidMount() {
         this.props.dispatchFetchGroups()
@@ -15,11 +15,13 @@ class GroupsIndexContainer extends Component {
         return (
            
             <section  className="max-w-6xl w-11/12 mx-auto mt-16"> 
-                <h1 className="grid grid-cols-3 gap-4 text-3xl text-center font-semibold mb-8">Pick a Class</h1>
+                <h1 className="text-3xl text-center font-semibold mb-8">Pick a Class</h1>
                 {this.props.loadingState === 'inProgress' ? (
                     'loading spinner'
                 ) : (
+                    
                     <GroupsList groups={this.props.groups} />
+                    
                 )}
             </section>
         )
