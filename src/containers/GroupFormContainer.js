@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux'
 import { createGroup } from '../actions/groups'
-import "tailwindcss/tailwind.css"
+
 class GroupFormContainer extends Component {
     state = {
         name: "",

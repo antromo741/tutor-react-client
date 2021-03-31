@@ -7,7 +7,7 @@ const GroupsList = ({ groups }) => {
         
        
             
-            <span className="grid grid-cols-3 gap-4" >
+            <span className="grid grid-flow-col grid-cols-3 grid-rows-3 gap-4" >
                     {groups.map(group => <GroupListItem key={group.id} group={group} />)}
                     
             </span>
