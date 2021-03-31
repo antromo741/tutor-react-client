@@ -32,7 +32,7 @@ class GroupShowContainer extends Component {
                 </h1>
                 <p className="my-2">
                     
-                    <Link to={`/groups/${this.props.group.id}/sessions/new`}>Add a session</Link></p>
+                    <Link to={`/groups/${this.props.group.id}/sessions/new`}>Add a lesson</Link></p>
                 
                 <div className="grid grid-cols-3">
                     {this.props.sessions.map((session) => (

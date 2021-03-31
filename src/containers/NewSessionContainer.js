@@ -33,10 +33,10 @@ class NewSessionContainer extends Component {
         return (
         <form className="max-w-4xl w-11/12 mx-auto mt-16 shadow-lg px-8 py-6" 
         onSubmit={this.handleSubmit}>
-            <h1 className="text-3xl text-center font-semibold mb-8">New Session</h1>
+            <h1 className="text-3xl text-center font-semibold mb-8">New Lesson</h1>
             <fieldset className="">
                 <label htmlFor="name" className="block uppercase">
-                Name{" "}
+                Title{" "}
                 <span className="text-red-400">{this.state.errors.name}</span>
                 </label>
                 <input
@@ -110,7 +110,7 @@ class NewSessionContainer extends Component {
             
                 <fieldset className="">
                     <label htmlFor="poster" className="block uppercase">
-                        Poster{" "}
+                        Cover Photo{" "}
                         <span className="text-red-400">{this.state.errors.poster}</span>
                     </label>
                     <input
@@ -124,7 +124,7 @@ class NewSessionContainer extends Component {
             <button
                 type="submit"
                 className="w-full p-4 bg-blue-300 mt-4 hover:bg-blue-400 transition-all duration-200">
-                    Add Session 
+                    Add Lesson 
             </button>
         </form>
     );
