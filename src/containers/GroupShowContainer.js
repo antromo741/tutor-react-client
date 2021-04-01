@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from 'react-router-dom'
 import { connect } from "react-redux";
 import { fetchGroup } from "../actions/groups";
-
+import ReactPlayer from 'react-player'
 class GroupShowContainer extends Component {
     state = {
         group: {},
@@ -19,11 +19,11 @@ class GroupShowContainer extends Component {
     
     render() {
         if (this.props.loadingState !== "successful") {
-            return <button type="button" class="bg-rose-600" disabled>
-                <svg class="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24">
+            return <button class="bg-rose-600">
+                <svg className="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24">
                 </svg>
                     Processing
-                    </button>
+                </button>
         }
         return (
             <section className="max-w-6xl w-11/12 mx-auto mt-16">
@@ -32,13 +32,20 @@ class GroupShowContainer extends Component {
                 </h1>
                 <p className="my-2">
                     
-                    <Link to={`/groups/${this.props.group.id}/sessions/new`}>Add a lesson</Link></p>
+                    <Link to={`/groups/${this.props.group.id}/sessions/new`}>
+                        <button class="focus border-2 border-purple-500 hover:border-black shadow-xl
+                                w-full text-2xl ease-in-out transition-all p-8 bg-blue-300 hover:bg-green-400
+                                duration-200 transform hover:-translate-y-1 hover:scale-105 rounded-md mt-6">
+                            Add a Lesson
+                        </button>
+                    </Link>
+                </p>
                 
-                <div className="grid grid-cols-3">
+                <div className="grid grid-cols-3 gap-4">
                     {this.props.sessions.map((session) => (
                         <figure className="p-4 shadow">
                             <img
-                                className=""
+                                className="h-12"
                                 alt={session.name}
                                 src={session.poster_url}
                             />
@@ -48,6 +55,16 @@ class GroupShowContainer extends Component {
                             <p>{session.end_time}</p>
                             <p>{session.location}</p>
                             
+                            <ReactPlayer 
+                                url='https://www.youtube.com/watch?v=fIFwzVF8GqY'
+                            height='400px'
+                            width='350px'
+                            />
+                          {/*   <button
+                                type="delete"
+                                className="p-4 bg-blue-300 mt-4 hover:bg-blue-400 transition-all duration-200">
+                                Delete Lesson
+                            </button> */}
                         </figure>
                     ))}
                 </div>

@@ -18,7 +18,12 @@ class NewSessionContainer extends Component {
         formData.append('session[end_time]', form.end_time.value);
         formData.append('session[location]', form.location.value);
         form.poster.files[0] && formData.append('session[poster]', form.poster.files[0], form.poster.value);
+       
+
         formData.append("session[group_id]", this.props.match.params.groupId);
+
+       
+       
         
       this.props.dispatchCreateSession(formData)
             .then((sessionJson) => {
@@ -118,6 +123,19 @@ class NewSessionContainer extends Component {
                         className="w-full my-4"
                         name="poster"
                         id="poster"
+                    />
+                </fieldset>
+
+                <fieldset className="">
+                    <label htmlFor="video" className="block uppercase">
+                        Lesson Video{" "}
+                        <span className="text-red-400">{this.state.errors.video}</span>
+                    </label>
+                    <input
+                        type="videoy"
+                        className="w-full my-4 border-2 p-4  focus:outline-none focus:ring-2"
+                        name="video"
+                        id="video"
                     />
                 </fieldset>
             
