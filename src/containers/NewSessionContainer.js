@@ -18,8 +18,8 @@ class NewSessionContainer extends Component {
         formData.append('session[end_time]', form.end_time.value);
         formData.append('session[location]', form.location.value);
         form.poster.files[0] && formData.append('session[poster]', form.poster.files[0], form.poster.value);
-       
-
+        form.video.files[0] && formData.append('session[video]', form.video.files[0], form.video.value);
+        //Video unfortunatly does not render properly when its not hard coded
         formData.append("session[group_id]", this.props.match.params.groupId);
 
        
@@ -132,7 +132,7 @@ class NewSessionContainer extends Component {
                         <span className="text-red-400">{this.state.errors.video}</span>
                     </label>
                     <input
-                        type="videoy"
+                        type="file"
                         className="w-full my-4 border-2 p-4  focus:outline-none focus:ring-2"
                         name="video"
                         id="video"

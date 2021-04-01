@@ -56,7 +56,9 @@ class GroupShowContainer extends Component {
                             <p>{session.location}</p>
                             
                             <ReactPlayer 
-                                url='https://www.youtube.com/watch?v=fIFwzVF8GqY'
+                                url={'https://www.youtube.com/watch?v=fIFwzVF8GqY'}
+                                //url={session.video_url}
+                                //Cant seem to get the video file to work, shows up as a blank screen right now
                             height='400px'
                             width='350px'
                             />
