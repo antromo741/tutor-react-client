@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).\
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 # README
 Link to the API github: https://github.com/antromo741/tutorfy-api
@@ -17,7 +17,7 @@ store and communicate with the API.
 
 ## Getting Started
 First run npm install to get all the dpendencies and packages.\
-After following the steps from the API, we can start the application with running yarn start.\ 
+After following the steps from the API, we can start the application with running yarn start.\
 Once yarn starts up and opens in the browser you will be able to use the application\
 and communicate data from the client side to the API.
 ### `yarn start`
