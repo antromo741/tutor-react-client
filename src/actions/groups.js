@@ -23,9 +23,11 @@ export const fetchGroups = () => {
 export const fetchGroup = (groupId) => {
     return (dispatch) => {
         dispatch({ type: START_LOADING_GROUP, payload: groupId });
+      
         fetch(`http://localhost:3001/groups/${groupId}`)
             .then((res) => res.json())
             .then((groupSessionsJson) => {
+                
                 dispatch({
                     type: SUCCESSFULLY_LOADED_GROUP_SESSIONS,
                     payload: groupSessionsJson

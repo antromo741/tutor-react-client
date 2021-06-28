@@ -29,7 +29,10 @@ class GroupFormContainer extends Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit} className="max-w-6xl w-3/4 mx-auto mt-16 shadow-lg px-4 py-6">
+            <form 
+            onSubmit={this.handleSubmit} 
+            className="max-w-6xl w-3/4 mx-auto mt-16 shadow-lg px-4 py-6"
+            >
                 <h1 className="text-center text-3xl font-semibold mb-2">New Subject</h1>
                 <fieldset>
                     <p className="h-8 pl-2 text-red-400">{this.state.errors.name}</p>

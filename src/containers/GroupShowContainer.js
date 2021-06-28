@@ -4,7 +4,16 @@ import { connect } from "react-redux";
 import { fetchGroup } from "../actions/groups";
 import ReactPlayer from 'react-player'
 class GroupShowContainer extends Component {
+    
+    constructor(props) {
+        super(props);
+        this.state = { count: 0 };
+
+        
+    }
+
     state = {
+        count: 0,
         group: {},
         sessions: [],
         loading: true
@@ -13,7 +22,21 @@ class GroupShowContainer extends Component {
 
     componentDidMount() {
         const groupId = this.props.match.params.groupId;
+        
+        
         this.props.dispatchFetchGroup(groupId);
+       
+    }
+
+
+    
+
+    handleSubmit = () => {
+        this.setState( state => ({
+          count: this.state.count + 1
+       
+        }));
+     
     }
 
     
@@ -62,6 +85,16 @@ class GroupShowContainer extends Component {
                             height='400px'
                             width='350px'
                             />
+
+                        <button onClick={this.handleSubmit}
+                        type="submit"
+                        value=""
+                        >
+                           {this.state.count}
+
+                            
+                        </button>
+
                           {/*   <button
                                 type="delete"
                                 className="p-4 bg-blue-300 mt-4 hover:bg-blue-400 transition-all duration-200">
