@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import { Link } from 'react-router-dom'
 import { connect } from "react-redux";
 import { fetchGroup } from "../actions/groups";
-import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player';
+
+//if you click a subject you will be brought to the show page to add a lesson and video
 class GroupShowContainer extends Component {
     
     constructor(props) {

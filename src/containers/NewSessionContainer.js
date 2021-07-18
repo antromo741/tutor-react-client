@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import {createSession} from "../actions/sessions"
 
+//When we click on a subject and then click add new lesson we will end up on this component
 
 class NewSessionContainer extends Component {
     state = {

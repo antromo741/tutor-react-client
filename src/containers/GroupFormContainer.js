@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux'
 import { createGroup } from '../actions/groups'
 
+//If you click new subject on the index page you will be brought to this page to add a new subject
 class GroupFormContainer extends Component {
     state = {
         name: "",

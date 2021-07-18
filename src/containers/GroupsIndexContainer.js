@@ -3,6 +3,7 @@ import GroupsList from "../components/GroupsList";
 import { connect } from 'react-redux'
 import { fetchGroups } from '../actions/groups'
 
+//This is the first componet we render which also renders the groupList component which renders the group list item component
 class GroupsIndexContainer extends Component {
     componentDidMount() {
         this.props.dispatchFetchGroups()

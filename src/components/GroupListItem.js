@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+//This component adds the data to the first page diplayed in the group list component
 
 const GroupListItem = ({ group }) => {
     return (
