@@ -2,4 +2,19 @@ div.headTitle {
     color: white;
     padding: 40px;
     text-align: center;
+    font-size: 500%;
+}
+
+div.headDesc {
+    color: white;
+    padding: 40px;
+    text-align: center;
+    font-size: 300%;
+}
+
+div.head2ndDesc {
+    color: white;
+    padding: 40px;
+    text-align: center;
+    font-size: 200%;
 }

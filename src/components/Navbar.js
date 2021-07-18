@@ -11,6 +11,8 @@ render() {
             
             <nav className="text-center bg-blue-900 text-yellow-100 p-4">
             <div className="headTitle">Tutorfy</div>
+            <div className="headDesc">Knowledge is Power</div>
+            <div className="head2ndDesc">We are stronger Together</div>
                 <NavLink
                     className="inline-block px-4 py-2"
                     activeClassName="text-yellow-300"
